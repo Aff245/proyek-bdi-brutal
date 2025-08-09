@@ -1,5 +1,11 @@
 {
   "version": 2,
-  "name": "bdi-agent-dashboard-brutal"
+  "builds": [
+    { "src": "vercel_bdi_dashboard/api/**/*.js", "use": "@vercel/node" },
+    { "src": "vercel_bdi_dashboard/public/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/vercel_bdi_dashboard/api/$1" },
+    { "src": "/(.*)", "dest": "/vercel_bdi_dashboard/public/$1" }
+  ]
 }
-
